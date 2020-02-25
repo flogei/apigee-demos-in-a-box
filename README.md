@@ -43,7 +43,7 @@ You can deploy all of the samples to your organization at once using a simple se
 
 ## <a name="ask"></a>Ask questions on the Apigee Community
 
-[![alt text](./images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+Apigee Community is a great place to ask questions and find answers about developing API proxies. <a href="https://community.apigee.com?via=github">(https://community.apigee.com?via=github)</a>
 
 ## <a name="docs"></a>Apigee Edge documentation
 
