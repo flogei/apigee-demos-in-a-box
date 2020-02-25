@@ -1,0 +1,204 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+            "targetServers": [
+                {
+                    "name": "Enterprisetarget",
+                    "host": "example.com",
+                    "isEnabled": true,
+                    "port": 8080,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "false",
+                        "keyStore": "keystore_name",
+                        "trustStore": "truststore_name",
+                        "keyAlias": "key_alias",
+                        "ignoreValidationErrors": "false"
+                    }
+                },
+                {
+                    "name": "ESBTarget",
+                    "host": "enterprise.com",
+                    "isEnabled": true,
+                    "port": 8080,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "false",
+                        "keyStore": "keystore_name",
+                        "trustStore": "truststore_name",
+                        "keyAlias": "key_alias",
+                        "ignoreValidationErrors": "false"
+                    }
+                },
+                {
+                    "name": "SecureBackend",
+                    "host": "client.badssl.com",
+                    "isEnabled": true,
+                    "port": 443,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "true",
+                        "keyStore": "keystore_name",
+                        "trustStore": "truststore_name",
+                        "keyAlias": "key_alias",
+                        "ignoreValidationErrors": "false"
+                    }
+                }
+            ],
+            "virtualHosts": [
+                {
+                    "name": "SecureCustom",
+                    "hostAliases": ["api.apigeek.eu"],
+                    "isEnabled": true,
+                    "port": 443,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "false",
+                        "keyStore": "keystore_name",
+                        "trustStore": "truststore_name",
+                        "keyAlias": "key_alias",
+                        "ignoreValidationErrors": "false"
+                    }
+                }
+            ],
+            "kvms": [
+                {
+                    "name": "backend_account_config",
+                    "entry": [
+                        {
+                            "name": "COMPANY",
+                            "value": "example.com"
+                        },
+                        {
+                            "name": "PREFIX",
+                            "value": "EXMPL"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "orgConfig": {
+	    "specs":[
+	    		{
+	    			"name":"Petstore-v2",
+	      			"file":"./resources/specs/petstore-v2.yaml"
+	    		}
+	    	],
+        "apiProducts": [
+            {
+                "name": "Product API Free",
+                "displayName": "Product API Free",
+                "description": "Free version of the API Product",
+                "apiResources": [
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "tier",
+                        "value": "bronze"
+                    }
+                ],
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "apikey"
+                ],
+                "quota": "3",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "minute",
+                "scopes": []
+            },
+            {
+                "name": "Product API Basic",
+                "displayName": "Product API Basic",
+                "description": "Basic version of the API Product",
+                "apiResources": [
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "tier",
+                        "value": "silver"
+                    }
+                ],
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "apikey"
+                ],
+                "quota": "1000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            },{
+                "name": "Product API Enterprise",
+                "displayName": "Product API Enterprise",
+                "description": "Enterprise version of the API Product",
+                "apiResources": [
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "tier",
+                        "value": "silver"
+                    }
+                ],
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "apikey"
+                ],
+                "quota": "100000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            }
+        ],
+        "developers": [
+            {
+                "attributes": [],
+                "email": "hugh@example.com",
+                "firstName": "Hugh",
+                "lastName": "Jack",
+                "userName": "hughexample"
+            },
+            {
+                "attributes": [],
+                "email": "grant@enterprise.com",
+                "firstName": "Grant",
+                "lastName": "Smith",
+                "userName": "grantsmith"
+            }
+        ],
+        "developerApps": {
+            "hugh@example.com": [
+                {
+                    "name": "coolhughapp",
+                    "apiProducts": [
+                        "Product API Free"
+                    ],
+                    "callbackUrl": "http://weatherapp.com",
+                    "scopes": []
+                }
+            ],
+            "grant@enterprise.com": [
+                {
+                    "name": "grantoneapp",
+                    "apiProducts": [
+                        "Product API Basic"
+                    ],
+                    "callbackUrl": "http://weatherapp.com",
+                    "scopes": []
+                }
+            ]
+        }
+    }
+}
